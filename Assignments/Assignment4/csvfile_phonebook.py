@@ -5,7 +5,7 @@ data=[["Name","Address","Phone no","Email"],
       ["SHYAM", "MUMBAI", "6567484646", "shyam@gmail.com"],
       ["KARAN", "JAIPUR", "546463773I", "karan@gmail.com"],
       ["JAY", "JAIPUR", "928739773I", "jay@gmail.com"]]
-with open("ADS.csv","w") as file:
+with open("ADS.csv","w",newline="") as file:
       writer = csv.writer(file)
       for x in data:
             writer.writerow(x)
