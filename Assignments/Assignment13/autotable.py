@@ -32,7 +32,7 @@ def create_tables(layer_dict):
         column_list = ", ".join(columns)
         spark.sql(f"DROP TABLE IF EXISTS {table_name}")
         spark.sql(f"CREATE TABLE {table_name} ({column_list})")
-        print(f"✅ Table created: {table_name}")
+        print(f" Table created: {table_name}")
 
 
 create_tables(raw_defs)
