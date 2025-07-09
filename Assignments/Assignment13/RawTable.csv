@@ -1,0 +1,8 @@
+RawTableName,RawTableColumn,RawTableColDatatype,CuratedTableName,CuratedTableColumn,CuratedTableColumnDatatype,PresntationLayTableName,PresentationLayercolumn,PresentationLayerColDataType
+Customers,CustomerID,INT,Customers_Curated,Cust_ID,INT,Customers_Present,Cust_ID,INT
+Customers,Name,STRING,Customers_Curated,Cust_Name,STRING,Customers_Present,Cust_Name,STRING
+Orders,OrderID,INT,Orders_Curated,Order_ID,INT,Orders_Present,Order_ID,INT
+Orders,CustomerID,INT,Orders_Curated,FK_Cust_ID,INT,Orders_Present,Customer_ID,INT
+Orders,OrderDate,DATE,Orders_Curated,Order_Date,DATE,Orders_Present,Order_Date,DATE
+Products,ProductID,INT,Products_Curated,Prod_ID,INT,Products_Present,Product_ID,INT
+Products,ProductName,STRING,Products_Curated,Prod_Name,STRING,Products_Present,Product_Name,STRING
