@@ -1,0 +1,38 @@
+1: Data Ingestion
+df = spark.read.csv("/Volumes/workspace/default/skit_assignment/sales.csv", header= True,inferSchema= True)
+display(df)
+
+
+2: Data Exploration
+df.show(5)  # Show first 5 rows
+df.printSchema()  # Display schema of data
+
+
+3: Data Filtering (Filter sales > 1000)
+filtered_df = df.filter(df["SALES"] > 1000)
+display(filtered_df)
+
+
+4: Selecting Relevant Columns
+selected_df = filtered_df.select("MONTH_ID", "QTR_ID", "YEAR_ID", "CITY", "COUNTRY")
+display(selected_df)
+
+
+5: Write to Delta Table in Append Mode
+selected_df.write.format("delta").mode("append").saveAsTable("default.agg_sales_data")
+
+
+6:-- Check Delta Table History
+spark.sql("DESCRIBE HISTORY default.agg_sales_data")
+%sql
+SELECT * FROM default.agg_sales_data;
+
+
+7:
+%sql
+create volume if not exists transformed_data
+
+df_transformed=df.filter((df.Attrition=="Yes")&(df.JobSatisfaction< 3)).select("EmployeeNumber","Age","Department","JobSatisfaction")
+df_transformed.write.format("delta").mode("overwrite")\
+.partitionBy("Department")\
+.save("/Volumes/workspace/default/skit/transformed_dats/high_attrition_risk_employee")
